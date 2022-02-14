@@ -2,8 +2,6 @@
 import dotenv from "dotenv";
 import { Application } from "./application";
 
-
-
 export async function main(options: any = {}) {
   const app = new Application(options);
   await app.boot();
