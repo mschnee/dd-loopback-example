@@ -7,7 +7,7 @@ export class DatadogSequence extends DefaultSequence {
   async handle(context: RequestContext): Promise<void> {
     /* added */ await tracer.trace("request.handle", async (span) => {
       try {
-          
+        context.bind('__dd_span').to(span);
         const { request, response } = context;
         // Invoke registered Express middleware
         const finished = await this.invokeMiddleware(context);
