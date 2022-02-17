@@ -5,7 +5,7 @@ import { tracer } from "./tracer";
 
 export class DatadogSequence extends DefaultSequence {
   async handle(context: RequestContext): Promise<void> {
-    /* added */ await tracer.trace("request.handle", async (span) => {
+    /* added */ await tracer.trace("loopback.request.handle", async (span) => {
       try {
         context.bind('__dd_span').to(span);
         const { request, response } = context;
